@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones</title>
+</head>
+<body>
+    <h1>Obtener Recomendaciones</h1>
+    <form action="{{ url_for('mostrar_recomendaciones') }}" method="post">
+        <label for="user_id">ID de Usuario:</label>
+        <input type="text" id="user_id" name="user_id" required>
+        <button type="submit">Obtener Recomendaciones</button>
+    </form>
+
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+
+    <ul>
+        {% for recommendation in recommendations %}
+            <li>Película ID: {{ recommendation.movieid }}, Peso : {{ recommendation.rating }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
